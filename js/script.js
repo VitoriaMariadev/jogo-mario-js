@@ -4,6 +4,7 @@ const text = document.querySelector('.score')
 
 let score = 0;
 let isPipePassed = false; // Adicionada variável para controlar se o pipe já foi passado
+let time = 1.5
 
 const jump = () => {
     mario.classList.add('jump');
@@ -38,6 +39,10 @@ const loop = setInterval(() => {
         isPipePassed = true; // Marcar o pipe como passado para evitar incremento múltiplo
         console.log('Score: ', score);
         text.textContent = `Pontuação: ${score}`;
+        time = time - 0.01
+        pipe.style.animation = `pipe-animation ${time}s infinite linear`;
+        
+        console.log(time)
     } else if (pipePosition > 0) {
         isPipePassed = false; // Resetar a marcação quando o pipe sair da tela
     }
